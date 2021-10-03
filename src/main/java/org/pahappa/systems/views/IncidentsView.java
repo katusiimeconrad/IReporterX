@@ -44,7 +44,9 @@ public class IncidentsView {
     }
 
     public List<Incident> getAlIncidents(){
-        return incidentService.getAllIncidents();
+        this.incident = new Incident();
+        this.incidents = incidentService.getAllIncidents();
+        return this.incidents;
     }
 
     public List<Incident> getRedFlagIncidents(){
@@ -56,7 +58,8 @@ public class IncidentsView {
             }
         }
         //The List will be empty if no incidents were marked as REDFLAG
-        return redflagIncidents;
+        this.incidents = redflagIncidents;
+        return this.incidents;
     }
 
     public List<Incident> getInterventionIncidents() {
@@ -67,8 +70,17 @@ public class IncidentsView {
                 interventionIncidents.add(incident);
             }
         }
-        // TODO Auto-generated method stub
-        return interventionIncidents;
+
+        this.incidents = interventionIncidents;
+        return this.incidents;
+    }
+
+    public Incident updateIncident(Incident incident) throws Exception {
+        return incidentService.updateIncident(incident);
+    }
+    public Incident findById(int id){
+         this.incident = incidentService.getIncidentOfId(id);
+         return this.incident;
     }
 
     public void deleteIncident(Incident incident) {
