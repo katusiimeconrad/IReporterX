@@ -1,0 +1,109 @@
+<!--<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"-->
+<!--        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">-->
+<!--<html xmlns="http://www.w3.org/1999/xhtml"-->
+<!--      xmlns:h="http://java.sun.com/jsf/html"-->
+<!--      xmlns:f="http://java.sun.com/jsf/core"-->
+<!--      xmlns:p="http://primefaces.org/ui">-->
+
+<!--<h:head>-->
+<!--    <title>Students</title>-->
+
+<!--    &lt;!&ndash;    <h:outputStylesheet name="webjars/primeflex/primeflex.min.css"/>&ndash;&gt;-->
+<!--    &lt;!&ndash;    <h:outputStylesheet library="primefaces" value=""/>&ndash;&gt;-->
+<!--    &lt;!&ndash;    <h:outputStylesheet library="primefaces-arya" value="prime-face-arya" />&ndash;&gt;-->
+<!--    &lt;!&ndash;    <h:outputStylesheet library="webjars" value="tailwindcss" />&ndash;&gt;-->
+<!--    &lt;!&ndash;    <h:outputStylesheet name="webjars/primeflex/primeflex.css" />&ndash;&gt;-->
+<!--    &lt;!&ndash;    <h:outputStylesheet name="primefaces-nova-light/theme.css" />&ndash;&gt;-->
+
+<!--    <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet"/>-->
+<!--    &lt;!&ndash;    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous" />&ndash;&gt;-->
+<!--    &lt;!&ndash;    <link rel="stylesheet" href="https://unpkg.com/primeflex@3.0.1/primeflex.css"></link>&ndash;&gt;-->
+
+<!--    &lt;!&ndash;    <h:outputStylesheet name="css/primeflex.min.css"/>&ndash;&gt;-->
+<!--</h:head>-->
+
+<!--<h:body class="container">-->
+<!--    <div class="layout-menu-wrapper">-->
+<!--        <h:outputLink value="employeesView.xhtml">Employees</h:outputLink>-->
+<!--    </div>-->
+<!--    <h1 class="text-blue-100">Students View</h1>-->
+<!--    <p class="bg-gray-50 text-green-500 text-green-500">-->
+<!--        Hello World!-->
+<!--    </p>-->
+
+<!--    <h:form id="addStudents">-->
+<!--        <p:growl id="message"></p:growl>-->
+
+<!--        <p:panelGrid columns="2">-->
+
+<!--            <p:outputLabel value="Name: "></p:outputLabel>-->
+<!--            <p:inputText value="#{studentView.student.studentName}"></p:inputText>-->
+
+<!--            &lt;!&ndash;            <p:outputLabel value="Name: "></p:outputLabel>&ndash;&gt;-->
+<!--            &lt;!&ndash;            <p:inputText value="#{studentView.student.studentName}"></p:inputText>&ndash;&gt;-->
+
+<!--            &lt;!&ndash;            <p:outputLabel value="Name: "></p:outputLabel>&ndash;&gt;-->
+<!--            &lt;!&ndash;            <p:inputText value="#{studentView.student.studentName}"></p:inputText>&ndash;&gt;-->
+
+<!--            <p:commandButton value="Add Student" action="#{studentView.save(studentView.student)}"-->
+<!--                             update="message @form"></p:commandButton>-->
+<!--        </p:panelGrid>-->
+
+<!--        <p:dataTable id="studentsTable" var="student" value="#{studentView.students}">-->
+<!--            <f:facet name="header">-->
+<!--                Students Table-->
+<!--            </f:facet>-->
+
+<!--            <p:column headerText="Student Id">-->
+<!--                <h:outputText value="#{student.studentId}"/>-->
+<!--            </p:column>-->
+<!--            <p:column headerText="Name">-->
+<!--                <h:outputText value="#{student.studentName}"/>-->
+<!--            </p:column>-->
+
+<!--        </p:dataTable>-->
+<!--    </h:form>-->
+
+<!--</h:body>-->
+<!--</html>-->
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+<h:head>
+    <script name="jquery/jquery.js" library="primefaces"></script>
+    <title>Register Student</title>
+</h:head>
+<h:form id="studentsView">
+    <p:growl id="messages"></p:growl>
+    <h1>Welcome to Taibah MIS</h1>
+    <p:panelGrid columns="2">
+        <p:outputLabel value="Enter Student Name:"></p:outputLabel>
+        <p:inputText value="#{studentView.student.studentName}"></p:inputText>
+        <p:commandButton value="Register" action="#{studentView.save(studentView.student)}" update="messages @form"></p:commandButton>
+
+    </p:panelGrid>
+
+    <p:dataTable id="studentsTable" var="student" value="#{studentView.students}"
+    >
+        <f:facet name="header">
+            Students table
+        </f:facet>
+
+        <p:column headerText="Code">
+            <h:outputText value="#{student.studentId}" />
+        </p:column>
+        <p:column headerText="Name">
+            <h:outputText value="#{student.studentName}" />
+        </p:column>
+        <p:column headerText="Hire date">
+            <h:outputText value="#{student.createdDate}" />
+        </p:column>
+    </p:dataTable>
+</h:form>
+
+<h:outputLink value="employeesView.xhtml">Employees</h:outputLink>
+<footer><p>Powered by pahappa</p></footer>
+</html>

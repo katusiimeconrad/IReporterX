@@ -1,0 +1,191 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+<h:head>
+    <!--        <script name="jquery/jquery.js" library="primefaces"></script>-->
+    <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet"/>
+
+    <title>iReporter: Home</title>
+</h:head>
+
+<h:body styleClass="container-fluid antialiased bg-gray-200">
+    <div class="bg-white flex justify-center shadow-md">
+        <div class="py-4 ">
+            <h1 class="text-2xl font-bold ">iReporter</h1>
+        </div>
+
+        <hr class="py-4"></hr>
+    </div>
+
+    <div class="container-fluid md:container bg-white m-auto pt-4 px-4">
+        <h:form>
+            <!--            Home- Dashbord-->
+            <h:commandLink value="Dashboard" action="#{navigationController.dashboard()}" title="Dashboard"
+                           styleClass="text-blue-800 pr-4"/>
+<!--            &lt;!&ndash;            Create / View Incidents Table&ndash;&gt;-->
+<!--            <h:commandLink value="Incidents" action="#{navigationController.view()}" title="Incidents"-->
+<!--                           styleClass="text-blue-800 pr-4"/>-->
+
+            <!--            View-->
+            <h:commandLink value="View Incident" action="#{navigationController.view()}" title="View"
+                           styleClass="text-green-800 pr-4"/>
+
+            <!--            reports-->
+            <h:commandLink value="Reports" action="#{navigationController.reports()}" title="Reports"
+                           styleClass="text-blue-800 pr-4"/>
+            <!--            Sign out-->
+            <h:commandLink value="Welcome" action="#{navigationController.welcome()}" title="Sign Out"
+                           styleClass="text-blue-800 pr-4"/>
+
+        </h:form>
+    </div>
+
+    <!--    Summaries-->
+
+    <div class="container mx-auto">
+        <div class="flex justify bg-white space-x-4 px-4">
+            <div class="w-1/4 mx-4 px-4 shadow-md">
+                <div class="surface-card shadow-2 p-3 border-round">
+                    <div class="flex justify-content-between mb-3">
+                        <div>
+                            <span class="block text-500 font-medium mb-3">Total Incidents</span>
+                            <div class="text-900 font-medium text-xl text-blue-800">#{incidentView.countIncidents()}</div>
+                        </div>
+                        <div class="flex align-items-center justify-content-center bg-orange-100 border-round"
+                             style="width:2.5rem;height:2.5rem">
+                            <i class="pi pi-map-marker text-orange-500 text-xl"/>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12 md:col-6 lg:col-3">
+                <div class="surface-card shadow-2 p-3 border-round">
+                    <div class="flex justify-content-between mb-3">
+                        <div>
+                            <span class="block text-500 font-medium mb-3">RedFlag Incidents</span>
+                            <div class="text-900 font-medium text-xl">#{incidentView.getRedFlagIncidents().size()}</div>
+                            <span class="text-green-500 font-medium">Closed </span>
+                            <span class="text-green-500 font-medium"># </span>
+
+                        </div>
+                        <div class="flex align-items-center justify-content-center bg-cyan-100 border-round"
+                             style="width:2.5rem;height:2.5rem">
+                            <i class="pi pi-inbox text-cyan-500 text-xl"/>
+                        </div>
+                    </div>
+                    <span class="text-green-500 font-medium">520  </span>
+                    <span class="text-500">newly registered</span>
+                </div>
+            </div>
+            <div class="col-12 md:col-6 lg:col-3">
+                <div class="surface-card shadow-2 p-3 border-round">
+                    <div class="flex justify-content-between mb-3">
+                        <span class="block text-500 font-medium mb-3">Intervention Incidents</span>
+                        <div class="text-900 font-medium text-xl">#{incidentView.getInterventionIncidents().size()}</div>
+                        <span class="text-green-500 font-medium">Closed </span>
+                        <span class="text-green-500 font-medium"># </span>
+                        <div class="flex align-items-center justify-content-center bg-purple-100 border-round"
+                             style="width:2.5rem;height:2.5rem">
+                            <i class="pi pi-comment text-purple-500 text-xl"/>
+                        </div>
+                    </div>
+                    <span class="text-green-500 font-medium">85 </span>
+                    <span class="text-500">responded</span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--    End Summaries-->
+    <p:divider/>
+
+<!--    Create Incident Form-->
+    <div class="container-fluid md:container bg-white m-auto pt-4 px-4">
+        <div>
+            <h:form id="incidents_view">
+                <div class="card">
+                    <p:panelGrid columns="1" cellpadding="7" >
+                        <p:row>
+                            <p:outputLabel value="Incident Title:" styleClass="pr-8" />
+                            <p:inputText value="#{incidentView.incident.title}"></p:inputText>
+                        </p:row>
+
+                        <p:row>
+                            <p:outputLabel value="Incident Type: "/>
+                            <p:selectOneMenu id="option" value="#{incidentView.incident.type}">
+                                <f:selectItem itemLabel="Select" itemValue=""/>
+                                <f:selectItem itemLabel="Red Flag" itemValue="Red Flag"/>
+                                <f:selectItem itemLabel="Intervention" itemValue="Red Flag"/>
+                            </p:selectOneMenu>
+                        </p:row>
+
+                        <p:row>
+                            <h5>Comment:</h5>
+                            <p:inputTextarea rows="10" cols="80" counter="display" maxlength="1000"
+                                         counterTemplate="{0} characters remaining." autoResize="false"/>
+                            <h:outputText id="display" class="p-d-block"/>
+                        </p:row>
+
+                        <p:commandButton value="Report Incident" action="#{incidentView.save(incidentView.incident)}"/>
+                    </p:panelGrid>
+                </div>
+            </h:form>
+        </div>
+    </div>
+<!--    End Create Incident Form-->
+
+
+<!--    Begin Incidents Table-->
+    <div class="container-fluid md:container mx-auto">
+        <h:form>
+            <p:dataTable id="incidentsTable" var="xs" value="#{incidentView.getAlIncidents()}"
+                         paginator="true" rows="5"
+                         paginatorTemplate="{CurrentPageReport} {FirstPageLink}
+             {PreviousPageLink} {PageLinks} {NextPageLink}
+             {LastPageLink} {RowsPerPageDropdown}"
+                         rowsPerPageTemplate="5,10,15">
+                <f:facet name="header text-center">
+                    Reported Incidents
+                </f:facet>
+
+                <p:column headerText="id">
+                    <h:outputText value="#{xs.id}"/>
+                </p:column>
+                <!-- To view the Incidet by Clicking the title -->
+
+                <p:column headerText="Title">
+                    <h:form>
+                        <h:outputText value="#{xs.title}"/>
+                    </h:form>
+
+                </p:column>
+
+                <p:column headerText="Type">
+                    <h:outputText value="#{xs.type}"/>
+                </p:column>
+                <p:column headerText="Comment">
+                    <h:outputText value="#{xs.comment}"/>
+                </p:column>
+                <p:column headerText="Status">
+                    <h:outputText value="#{xs.status}"/>
+                </p:column>
+                <p:column headerText="Created On">
+                    <h:outputText value="#{xs.createdOn}"/>
+                </p:column>
+
+                <p:column headerText="Options">
+                    <p:commandButton value="View Incident" action="viewIncident.xhtml" type="button" styleClass="ui-button-raised ui-button-info">
+                            <f:param name="incident_id" value="#{xs.id}"></f:param>
+                    </p:commandButton>
+
+                    <p:commandButton value="Delete" action="#{incidentView.deleteIncident(xs)}" type="button" styleClass="ui-button-raised ui-button-danger"/>
+                </p:column>
+            </p:dataTable>
+        </h:form>
+    </div>
+
+<!--    End Incidents Table-->
+    <!--<h:outputLink value="pages/studentsView.xhtml">Students</h:outputLink>-->
+
+</h:body>
+</html>

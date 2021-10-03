@@ -1,0 +1,50 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
+<h:head>
+    <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet"/>
+</h:head>
+
+<h:body styleClass="container-fluid antialiased bg-gray-200">
+    <div class="bg-white flex justify-center shadow-md ">
+        <div class="py-4 ">
+            <h1 class="text-2xl font-bold ">iReporter</h1>
+        </div>
+    </div>
+    <hr class="shadow-md"></hr>
+
+    <div class="container-fluid md:container bg-white m-auto pt-4 px-4">
+        <div>
+            <div class="text-center md:text-justify">
+                <p>
+                    Corruption is a huge bane to Africa’s development. African countries must develop novel and localised solutions that will curb this menace, hence the birth of iReporter.
+                    iReporter enables any/every citizen to bring any form of corruption to the notice of appropriate authorities and the general public
+                </p>
+            </div>
+
+            <p:divider></p:divider>
+
+            <!-- Main Content -->
+            <div>
+                <div class="card">
+                    <h:form>
+                        <p:growl id="growl" life="2000"/>
+
+                        <p:commandLink id="ajax" update="growl" action="pages/report.xhml" style="margin-right:20px;">
+                            <h:outputText value="Report Incident"/>
+                        </p:commandLink>
+
+                        <p:commandLink id="nonAjax" action="pages/viewIncident.xhtml" style="margin-right:20px;" ajax="false">
+                            <h:outputText value="View Incidents"/>
+                        </p:commandLink>
+                    </h:form>
+
+                </div>
+
+                <h:outputLink value="pages/viewIncident.xhtml">View Incident</h:outputLink>
+
+            </div>
+        </div>
+    </div>
+</h:body>
+</html>
