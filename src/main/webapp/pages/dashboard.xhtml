@@ -114,16 +114,17 @@
                             <p:outputLabel value="Incident Type: "/>
                             <p:selectOneMenu id="option" value="#{incidentView.incident.type}">
                                 <f:selectItem itemLabel="Select" itemValue=""/>
-                                <f:selectItem itemLabel="Red Flag" itemValue="Red Flag"/>
-                                <f:selectItem itemLabel="Intervention" itemValue="Red Flag"/>
+                                <f:selectItem itemLabel="Red Flag" itemValue="#{incidentView.getRedFlag()}"/>
+                                <f:selectItem itemLabel="Intervention" itemValue="#{incidentView.getIntervention()}"/>
                             </p:selectOneMenu>
                         </p:row>
 
                         <p:row>
                             <h5>Comment:</h5>
                             <p:inputTextarea rows="10" cols="80" counter="display" maxlength="1000"
-                                         counterTemplate="{0} characters remaining." autoResize="false"/>
-                            <h:outputText id="display" class="p-d-block"/>
+                                         counterTemplate="{0} characters remaining." autoResize="false"
+                                             value="#{incidentView.incident.comment}" />
+                            <h:outputText id="display" class="p-d-block" />
                         </p:row>
 
                         <p:commandButton value="Report Incident" action="#{incidentView.save(incidentView.incident)}"/>
@@ -175,12 +176,12 @@
 
                 <p:column headerText="Options">
                     <p:commandButton value="View Incident" action="#{navigationController.view()}"
-                                     type="submit" styleClass="ui-button-raised ui-button-info">
+                                      styleClass="ui-button-raised ui-button-info">
                             <f:param name="incident_id" value="#{xs.id}"></f:param>
                     </p:commandButton>
 
-                    <p:commandButton value="Delete" action="#{incidentView.deleteIncident(xs)}"
-                                     type="submit" styleClass="ui-button-raised ui-button-danger"/>
+<!--                    <p:commandButton value="Delete" action="#{incidentView.deleteIncident(xs)}"-->
+<!--                                      styleClass="ui-button-raised ui-button-danger"/>-->
                 </p:column>
             </p:dataTable>
         </h:form>

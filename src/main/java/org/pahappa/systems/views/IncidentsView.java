@@ -32,6 +32,7 @@ public class IncidentsView {
      */
     public void save(Incident incident) throws Exception {
         incidentService.saveIncident(incident);
+        this.incident = new Incident();
 
     }
 

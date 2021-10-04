@@ -54,7 +54,7 @@ public class IncidentServiceImpl implements IncidentService {
 		try {
 			transaction = session.beginTransaction();
 
-			session.update(incident);
+			session.saveOrUpdate(incident);
 		} catch (HibernateException e){
 			e.printStackTrace();
 		} finally {

@@ -1,6 +1,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://java.sun.com/jsf/html"
       xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:c="http://java.sun.com/jstl/core"
       xmlns:p="http://primefaces.org/ui">
 <h:head>
 
@@ -42,7 +43,13 @@
                 <div class="space-y-4 py-4">
                     <h3 class="font-bold pb-2">Title</h3>
                     <p:inplace>
-                        <p:inputText value="#{incidentView.findById(request.getParameter('incident_id')).title}" />
+                        <c:if test="#{request.getParameter('incident_id') != null}" >
+                            <p:inputText value="#{ incidentView.findById(request.getParameter('incident_id')).title}" />
+                        </c:if>
+                        <c:if test="#{request.getParameter('incident_id') eq null}" >
+                            <p:inputText value="#{ incidentView.incident.type}" />
+                        </c:if>
+
                     </p:inplace>
                 </div>
 
