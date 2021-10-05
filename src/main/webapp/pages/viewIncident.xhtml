@@ -58,7 +58,11 @@
                 <div class="space-y-4 py-4">
                     <h3 class="font-bold pb-2">Type</h3>
                     <p:inplace editor="true">
-                        <p:inputText value="#{incidentView.incident.type} "/>
+                        <p:selectOneMenu id="option" value="#{incidentView.incident.type}">
+                            <f:selectItem itemLabel="Select" itemValue=""/>
+                            <f:selectItem itemLabel="Red Flag" itemValue="#{incidentView.getRedFlag()}"/>
+                            <f:selectItem itemLabel="Intervention" itemValue="#{incidentView.getIntervention()}"/>
+                        </p:selectOneMenu>
                     </p:inplace>
                 </div>
 
@@ -67,18 +71,12 @@
                 <div class="space-y-4 py-4">
                     <h3 class="font-bold pb-2">Status</h3>
                     <p:inplace editor="true">
-                        <p:inputText value="#{incidentView.incident.status}"
-                                     required="true" label="text"/>
-                    </p:inplace>
-                </div>
-
-                <hr />
-
-                <div class="space-y-4 py-4">
-                    <h3 class="font-bold pb-2">Date Created</h3>
-                    <p:inplace editor="true">
-                        <p:inputText value="#{incidentView.incident.createdOn}"
-                                     required="true" label="text"/>
+                        <p:selectOneMenu id="sat" value="#{incidentView.incident.status}">
+                            <f:selectItem itemLabel="Draft" itemValue="#{incidentView.getDraft()}"/>
+                            <f:selectItem itemLabel="Under Investigation" itemValue="#{incidentView.getUnderInvestigation()}"/>
+                            <f:selectItem itemLabel="Rejected" itemValue="#{incidentView.getRejected()}"/>
+                            <f:selectItem itemLabel="Resolved" itemValue="#{incidentView.getResolved()}"/>
+                        </p:selectOneMenu>
                     </p:inplace>
                 </div>
 
@@ -101,12 +99,12 @@
                     </div>
 
 <!--                    Still have to figure out how to redirect to home after deleting-->
-<!--                    <div id="Delete" class="border-gray-800 rounded" >-->
-<!--                        <h:commandButton label="Delete Incident"-->
-<!--                                         action="#{incidentView.deleteIncident(incidentView.incident)}"-->
-<!--                                         styleClass="ui-button-raised ui-button-danger " value="Delete Incident"-->
-<!--                                         type="submit"  />-->
-<!--                    </div>-->
+                    <div id="Delete" class="border-gray-800 rounded" >
+                        <h:commandButton label="Delete Incident"
+                                         action="#{incidentView.deleteIncident(incidentView.incident)}"
+                                         styleClass="ui-button-raised ui-button-danger " value="Delete Incident"
+                                         type="submit"  />
+                    </div>
 
                 </div>
 
