@@ -1,5 +1,6 @@
 package org.pahappa.systems.views;
 
+import org.pahappa.systems.enums.Status;
 import org.pahappa.systems.enums.Type;
 import org.pahappa.systems.models.Incident;
 import org.pahappa.systems.services.IncidentService;
@@ -9,6 +10,7 @@ import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 @ManagedBean( name = "incidentView")
@@ -77,6 +79,7 @@ public class IncidentsView {
     }
 
     public Incident updateIncident(Incident incident) throws Exception {
+        incident.setCreatedOn(new Date());
         return incidentService.updateIncident(incident);
     }
     public Incident findById(int id){
@@ -114,11 +117,27 @@ public class IncidentsView {
         this.incidents = incidents;
     }
 
+    //Incident Types
     public Type getRedFlag(){
         return Type.RED_FLAG;
     }
     public Type getIntervention(){
         return Type.INTERVENTION;
+    }
+
+    //Incident Statuses
+    public Status getUnderInvestigation() {
+        return Status.UNDER_INVESTIGATION;
+    }
+
+    public Status getRejected(){
+        return Status.REJECTED;
+    }
+    public Status getResolved() {
+        return Status.RESOLVED;
+    }
+    public Status getDraft(){
+        return Status.DRAFT;
     }
 
 }

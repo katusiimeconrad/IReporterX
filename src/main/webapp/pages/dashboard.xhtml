@@ -176,12 +176,10 @@
 
                 <p:column headerText="Options">
                     <p:commandButton value="View Incident" action="#{navigationController.view()}"
-                                      styleClass="ui-button-raised ui-button-info">
+                                      styleClass="ui-button-raised ui-button-info"
+                                      type="submit" >
                             <f:param name="incident_id" value="#{xs.id}"></f:param>
                     </p:commandButton>
-
-<!--                    <p:commandButton value="Delete" action="#{incidentView.deleteIncident(xs)}"-->
-<!--                                      styleClass="ui-button-raised ui-button-danger"/>-->
                 </p:column>
             </p:dataTable>
         </h:form>
