@@ -31,11 +31,8 @@
             <h:commandLink value="View Incident" action="#{navigationController.view()}" title="View"
                            styleClass="text-green-800 pr-4"/>
 
-            <!--            reports-->
-            <h:commandLink value="Reports" action="#{navigationController.reports()}" title="Reports"
-                           styleClass="text-blue-800 pr-4"/>
-            <!--            Sign out-->
-            <h:commandLink value="Welcome" action="#{navigationController.welcome()}" title="Sign Out"
+<!--            Landing Page-->
+            <h:commandLink value="Welcome" action="#{navigationController.home()}" title="Sign Out"
                            styleClass="text-blue-800 pr-4"/>
 
         </h:form>
@@ -43,8 +40,8 @@
 
     <!--    Summaries-->
 
-    <div class="container mx-auto py-4">
-        <div class="flex justify bg-white space-x-4 px-4 space-x-auto">
+    <div class="container mx-auto py-4 space-x-auto">
+        <div class="flex justify bg-white space-x-4 px-4 ">
             <div class="w-1/4 mx-2 px-4 shadow-md">
                 <div class="surface-card shadow-2 p-3 border-round">
                     <div class="flex justify-content-between mb-3">
@@ -134,8 +131,7 @@
         </div>
     </div>
     <!--    End Create Incident Form-->
-
-
+    <hr></hr>
     <!--    Begin Incidents Table-->
     <div class="container-fluid md:container mx-auto">
         <h:form>
