@@ -23,15 +23,9 @@
             <!--            Home- Dashbord-->
             <h:commandLink value="Dashboard" action="#{navigationController.dashboard()}" title="Dashboard"
                            styleClass="text-blue-800 pr-4"/>
-            <!--            &lt;!&ndash;            Create / View Incidents Table&ndash;&gt;-->
-            <!--            <h:commandLink value="Incidents" action="#{navigationController.view()}" title="Incidents"-->
-            <!--                           styleClass="text-blue-800 pr-4"/>-->
 
-            <!--            View-->
-            <h:commandLink value="View Incident" action="#{navigationController.view()}" title="View"
-                           styleClass="text-green-800 pr-4"/>
 
-<!--            Landing Page-->
+            <!--            Landing Page-->
             <h:commandLink value="Welcome" action="#{navigationController.home()}" title="Sign Out"
                            styleClass="text-blue-800 pr-4"/>
 
@@ -171,18 +165,15 @@
                 </p:column>
 
                 <p:column headerText="Options">
-                    <p:commandButton value="View Incident" action="#{navigationController.view()}"
-                                     styleClass="ui-button-raised ui-button-info"
-                                     type="submit">
-                        <f:param name="incident_id" value="#{xs.id}"></f:param>
-                    </p:commandButton>
+                    <p:button value="View" outcome="#{navigationController.view()}" styleClass="button">
+                        <f:param name="id" value="#{xs.id}"/>
+                    </p:button>
                 </p:column>
             </p:dataTable>
         </h:form>
     </div>
 
     <!--    End Incidents Table-->
-    <!--<h:outputLink value="pages/studentsView.xhtml">Students</h:outputLink>-->
 
 </h:body>
 </html>
