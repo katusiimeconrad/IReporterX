@@ -22,8 +22,8 @@
 		destroy-method="close">
 		<property name="driverClassName" value="com.mysql.jdbc.Driver" />
 		<property name="url" value="jdbc:mysql://localhost:3306/ireporter" />
-		<property name="username" value="conrad" />
-		<property name="password" value="babanraku" />
+		<property name="username" value="root" />
+		<property name="password" value="PDyd0QtY1d]Z2[jlUeIA" />
 	</bean>
 	<!-- Define SessionFactory bean -->
 	<bean id="sessionFactory"
