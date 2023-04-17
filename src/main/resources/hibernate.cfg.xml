@@ -10,8 +10,8 @@
         <property name="hibernate.connection.url">jdbc:mysql://localhost/ireporter</property>
 
 <!--        Database credentials-->
-        <property name="connection.username">conrad</property>
-        <property name="connection.password">babanraku</property>
+        <property name="connection.username">root</property>
+        <property name="connection.password">PDyd0QtY1d]Z2[jlUeIA</property>
 
 <!--        Enable SQL Logging-->
         <property name="show_sql">true</property>
