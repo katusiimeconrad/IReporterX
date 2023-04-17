@@ -9,4 +9,4 @@ faces-config.NavData
 
 target
 *.iml
-target/
+target/*
