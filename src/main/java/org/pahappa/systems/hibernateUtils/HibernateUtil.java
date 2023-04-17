@@ -4,14 +4,9 @@ import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
 
 /**
- *
  * @author HP
  */
 public class HibernateUtil {
-
-    private static SessionFactory sessionFactoryObj = buildSessionFactoryObj();
-
-    // Create The SessionFactory Object From Standard (Hibernate.cfg.xml) Configuration File
 
     public static SessionFactory buildSessionFactoryObj() {
         try {
@@ -20,9 +15,13 @@ public class HibernateUtil {
             exceptionObj.printStackTrace();
         }
         return sessionFactoryObj;
-    }
+    }    private static SessionFactory sessionFactoryObj = buildSessionFactoryObj();
+
+    // Create The SessionFactory Object From Standard (Hibernate.cfg.xml) Configuration File
 
     public static SessionFactory getSessionFactory() {
         return sessionFactoryObj;
     }
+
+
 }
